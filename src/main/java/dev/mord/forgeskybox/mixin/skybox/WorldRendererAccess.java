@@ -8,20 +8,20 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(LevelRenderer.class)
 public interface WorldRendererAccess {
-    @Accessor
+    @Accessor("skyBuffer")
     VertexBuffer getLightSkyBuffer();
 
-    @Accessor
+    @Accessor("starBuffer")
     VertexBuffer getStarsBuffer();
 
     @Deprecated
-    @Accessor("SUN")
+    @Accessor("SUN_LOCATION")
     static ResourceLocation getSun() {
         throw new AssertionError();
     }
 
     @Deprecated
-    @Accessor("MOON_PHASES")
+    @Accessor("MOON_LOCATION")
     static ResourceLocation getMoonPhases(){
         throw new AssertionError();
     }

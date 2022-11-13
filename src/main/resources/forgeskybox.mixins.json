@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "dev.mord.forgeskybox.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "forgeskybox.refmap.json",
+  "mixins": [
+  ],
+  "minVersion": "0.8",
+  "client": [
+    "skybox.FogColorMixin",
+    "skybox.SkyboxRenderMixin",
+    "skybox.SunSkyColorMixin",
+    "skybox.WorldRendererAccess"
+  ]
+}

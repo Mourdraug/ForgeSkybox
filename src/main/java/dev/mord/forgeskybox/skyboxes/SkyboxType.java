@@ -24,7 +24,7 @@ import net.minecraftforge.registries.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Mod.EventBusSubscriber(modid = FabricSkyBoxesClient.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = FabricSkyBoxesClient.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class SkyboxType<T extends AbstractSkybox> extends ForgeRegistryEntry<SkyboxType<? extends AbstractSkybox>> {
     public static Supplier<IForgeRegistry<SkyboxType<? extends AbstractSkybox>>> REGISTRY_SUPPLIER;
     public static SkyboxType<MonoColorSkybox> MONO_COLOR_SKYBOX;
@@ -114,7 +114,7 @@ public class SkyboxType<T extends AbstractSkybox> extends ForgeRegistryEntry<Sky
     }
 
     @SubscribeEvent
-    public void registerSkyboxes(RegistryEvent.Register<SkyboxType<? extends  AbstractSkybox>> event) {
+    public static void registerSkyboxes(RegistryEvent.Register<SkyboxType<? extends  AbstractSkybox>> event) {
         MONO_COLOR_SKYBOX = register(SkyboxType.Builder.create(MonoColorSkybox.class, "monocolor").legacySupported().deserializer(LegacyDeserializer.MONO_COLOR_SKYBOX_DESERIALIZER).factory(MonoColorSkybox::new).add(2, MonoColorSkybox.CODEC).build());
         SQUARE_TEXTURED_SKYBOX = register(SkyboxType.Builder.create(SquareTexturedSkybox.class, "square-textured").deserializer(LegacyDeserializer.SQUARE_TEXTURED_SKYBOX_DESERIALIZER).legacySupported().factory(SquareTexturedSkybox::new).add(2, SquareTexturedSkybox.CODEC).build());
         SINGLE_SPRITE_SQUARE_TEXTURED_SKYBOX = register(SkyboxType.Builder.create(SingleSpriteSquareTexturedSkybox.class, "single-sprite-square-textured").add(2, SingleSpriteSquareTexturedSkybox.CODEC).build());

@@ -14,13 +14,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class FogColorMixin {
 
     @Shadow
-    private static float red;
+    private static float fogRed;
 
     @Shadow
-    private static float blue;
+    private static float fogBlue;
 
     @Shadow
-    private static float green;
+    private static float fogGreen;
 
     /**
      * Checks if we should change the fog color to whatever the skybox set it to, and sets it.
@@ -31,9 +31,9 @@ public class FogColorMixin {
     private static void modifyColors(Camera pActiveRenderInfo, float pPartialTicks, ClientLevel pLevel, int pRenderDistanceChunks, float pBossColorModifier, CallbackInfo ci) {
         if (SkyboxManager.shouldChangeFog)
         {
-            red = SkyboxManager.fogRed;
-            blue = SkyboxManager.fogBlue;
-            green = SkyboxManager.fogGreen;
+            fogRed = SkyboxManager.fogRed;
+            fogBlue = SkyboxManager.fogBlue;
+            fogGreen = SkyboxManager.fogGreen;
             SkyboxManager.shouldChangeFog = false;
             ci.cancel();
         }

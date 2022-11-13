@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 
-@Mod.EventBusSubscriber(modid = FabricSkyBoxesClient.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = FabricSkyBoxesClient.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class LegacyDeserializer<T extends AbstractSkybox> extends ForgeRegistryEntry<LegacyDeserializer<? extends AbstractSkybox>> {
     public static LegacyDeserializer<MonoColorSkybox> MONO_COLOR_SKYBOX_DESERIALIZER;
     public static LegacyDeserializer<SquareTexturedSkybox> SQUARE_TEXTURED_SKYBOX_DESERIALIZER;
@@ -135,7 +135,7 @@ public class LegacyDeserializer<T extends AbstractSkybox> extends ForgeRegistryE
     }
 
     @SubscribeEvent
-    public void registerDeserializers(RegistryEvent.Register<LegacyDeserializer<? extends AbstractSkybox>> event) {
+    public static void registerDeserializers(RegistryEvent.Register<LegacyDeserializer<? extends AbstractSkybox>> event) {
         MONO_COLOR_SKYBOX_DESERIALIZER = register(new LegacyDeserializer<>(LegacyDeserializer::decodeMonoColor, MonoColorSkybox.class), "mono_color_skybox_legacy_deserializer");
         SQUARE_TEXTURED_SKYBOX_DESERIALIZER = register(new LegacyDeserializer<>(LegacyDeserializer::decodeSquareTextured, SquareTexturedSkybox.class), "square_textured_skybox_legacy_deserializer");
     }
